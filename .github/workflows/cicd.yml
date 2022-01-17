@@ -1,0 +1,22 @@
+name: Build for all platforms
+on:
+  push:
+    branches: [master, preprod, staging]
+
+jobs:
+  Android_build:
+    runs-on: ubuntu-latest
+    container: reactnativecommunity/react-native-android
+    steps:
+    - uses: actions/checkout@v2
+    - name: DEV SETP UP
+      run: npm run dev-setup
+      
+    - name: Trigger Android Linux build
+      run: cd template && cd android && ./gradlew assembleRelease
+
+    - name: Upload Android Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: app-release.apk
+        path: template/android/app/build/outputs/apk/release
