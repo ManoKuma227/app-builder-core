@@ -8,4 +8,4 @@ This repository is a part of [RTE app builder](https://appbuilder.agora.io).
     ```
     npm run dev-setup
     ```
-    This command will automatically set everything up for development
+    This command will automatically set everything up for development.
